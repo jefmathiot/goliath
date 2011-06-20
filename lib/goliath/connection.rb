@@ -76,7 +76,7 @@ module Goliath
       if req = @pending.shift
         @current = req
         @current.succeed
-      else
+      elsif !@current.nil?
         @current.close
         @current = nil
       end
