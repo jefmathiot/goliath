@@ -76,11 +76,10 @@ module Goliath
       if req = @pending.shift
         @current = req
         @current.succeed
-      elsif @current
+      elsif !@current.nil?
         @current.close
         @current = nil
       end
-
       close_connection_after_writing rescue nil if !keep_alive
     end
 
